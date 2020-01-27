@@ -1,0 +1,14 @@
+{
+  "extends": ["stylelint-config-standard", "stylelint-config-rational-order"],
+  "defaultSeverity": "warning",
+  "rules": {
+    "rule-empty-line-before": [
+      "always",
+      {
+        "except": ["inside-block"]
+      }
+    ],
+    "declaration-colon-newline-after": null,
+    "value-list-comma-newline-after": null
+  }
+}

@@ -21,13 +21,13 @@ def get_all_cattle():
 
 @api.route('/cattle/<int:id>/group', methods=['PUT'])
 def update_cattle_group(id):
+    cattle = Cattle.query.get_or_404(
+        id, description='cattle id {} is not found.'.format(id))
     group_id = request.json.get('group')
     if group_id is None or group_id == '':
         raise ValidationError('group column is empty.')
     GroupMeta.query.get_or_404(
         group_id, description='group id {} is not found.'.format(group_id))
-    cattle = Cattle.query.get_or_404(
-        id, description='cattle id {} is not found.'.format(id))
     cattle.group = group_id
     db.session.add(cattle)
     db.session.commit()
